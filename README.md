@@ -1,4 +1,4 @@
-# Farbmarkierungen-auf-C.net
+# Farbmarkierungen-auf-µC.net
 Das Script erzeugt zusätzliche Farbmarkierungen  in den Beiträgen im <https://Mikrocontroller.net>-Forum:
 
 - Markierung eigener Beiträge (Farbverlauf Beitrags-Titelzeile - Orange->eigene Farbe)
