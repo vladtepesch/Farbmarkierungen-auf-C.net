@@ -35,7 +35,7 @@ changelog:
 ## Installation
 
 - Grease Monkey installieren
-- [User script] installieren und in Editor öffnen
+- [User script] installieren und in Editor öffnen (Entweder vor dem Installieren häkchen setzen, oder über das Menü beim Affen)
 - im Bereich `- Individuelle Anpassungen -` anpassungen vornehmen:
   - Benutzernamen anpassen
   - Benutzerid anpassen (kann auf der eigenen Benutzereinstellungen-Seite abgelesen werden)
