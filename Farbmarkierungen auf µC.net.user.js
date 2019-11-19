@@ -8,7 +8,7 @@
 // @include        https://www.mikrocontroller.net/*
 // @include        http://embdev.net/*
 // @include        https://embdev.net/*
-// @version        7
+// @version        9
 // ==/UserScript==
 //
 // changelog:
@@ -27,6 +27,9 @@
 //           individual colors for USERNAME_HIGHLIGHT
 //       v8: by vlad_tepesch
 //           fix the width of the colored headers after µC.net style update around 2019-11-18
+//       v9: by vlad_tepesch
+//           added snippet to shwo own user id
+//
 // --------------------------------------------
 // --------- Individuelle Anpassungen ---------
 // --------------------------------------------
@@ -65,6 +68,24 @@ var zombieIntensityOld   =  0x80; // dunkelster Farbton, der benutzt wird.
 // ---------------------------------
 // --------- Funktionsteil ---------
 // ---------------------------------
+if(/\/user\/edit$/.test(window.location)){
+  var userid  = document.querySelector("#new_user_id").value;
+  if(userid){
+    var table   = document.querySelector("#form_new_user_email").closest('table');
+    if(table){
+      var row = table.insertRow(2);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      cell1.innerHTML = "<strong>User ID</strong>";
+      cell2.innerHTML =  userid;
+    }
+  }
+}
+if(! /\/topic\//.test(window.location)){
+  return;
+  
+}
+
 
 var today = new Date();
 var subjects = document.evaluate("//div[@class='subject']", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -74,6 +95,9 @@ var dstart = new Date();
 
 addGlobalStyle(' div.info { margin: 0px 0px 0px 0px; padding:5px 5px 5px 5px;}');
 //addGlobalStyle(' div.author {visibility:collapse;} div.author * {visibility:visible;} ');
+
+
+
 
 //alert( " " + openerId);
 // color thread opener
