@@ -43,4 +43,4 @@ changelog:
   - (eventuell Farben anpassen)
   - (eventuell Liste mit VIPs anpassen (Standard: Andreas und Mods))
   
-[user script]: https://github.com/vladtepesch/Farbmarkierungen-auf-C.net/raw/master/Farbmarkierungen%20auf%20%C2%B5C.net.user.js 
+[user script]: https://github.com/vladtepesch/Farbmarkierungen-auf-mikrocontroller.net/raw/master/Farbmarkierungen%20auf%20%C2%B5C.net.user.js
