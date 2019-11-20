@@ -8,7 +8,7 @@
 // @include        https://www.mikrocontroller.net/*
 // @include        http://embdev.net/*
 // @include        https://embdev.net/*
-// @version        9
+// @version        10
 // ==/UserScript==
 //
 // changelog:
