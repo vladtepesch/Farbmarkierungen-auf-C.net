@@ -18,7 +18,7 @@
 //           added some includes to also work on https and english version of site
 //       v6: by vlad_tepesch
 //           changed coloring by age to use different shades for older or younger posts
-//           changed age colorting to color post info field instead of complete background
+//           changed age coloring to color post info field instead of complete background
 //           inserted variable for different colors into param section
 //           changed some colors
 //       v7: by vlad_tepesch
@@ -28,7 +28,10 @@
 //       v8: by vlad_tepesch
 //           fix the width of the colored headers after µC.net style update around 2019-11-18
 //       v9: by vlad_tepesch
-//           added snippet to shwo own user id
+//           added snippet to show own user id
+//      v10: by vlad_tepesch
+//           added stickySidebars option (removes gradient from title bar)
+//           added insertToTop option that creates a link to go back to top into the right sidebar
 //
 // --------------------------------------------
 // --------- Individuelle Anpassungen ---------
@@ -57,6 +60,9 @@ var ownColor          = '#0000FF'; // blau
 var threadOpenerColor = '#00A000'; // mittelhelles grün
 var specialUserColor  = '#FF0000'; // 
 
+var stickySidebars = true;
+var insertToTop    = true;
+
 var Months = (30 * 24 * 60 * 60 * 1000); // ca. 1 Monat
 
 
@@ -81,11 +87,38 @@ if(/\/user\/edit$/.test(window.location)){
     }
   }
 }
+
+
+
+if(insertToTop){
+  var srbar = document.getElementById('sidebar-right');
+  if(srbar){
+    var el = srbar.querySelector('div ul');
+    var n = document.createElement('li');
+    n.innerHTML = '<a href="#" style="float: right;">nach oben</a>';
+    el.insertBefore(n, el.firstChild);
+  }
+}
+
+if(stickySidebars)
+{
+  makeSidebarSticky('sidebar-right');
+  makeSidebarSticky('sidebar-left');
+
+  
+  document.getElementById('top').style.background = '#fa0';
+  var mainCont = document.getElementById('main');
+
+  mainCont.closest('table').style.borderCollapse = 'unset';
+  mainCont.style.borderTopWidth = '5px';
+  mainCont.style.borderTopColor = '#fa0';
+  mainCont.style.borderTopStyle = 'solid';
+}
+
 if(! /\/topic\//.test(window.location)){
   return;
   
 }
-
 
 var today = new Date();
 var subjects = document.evaluate("//div[@class='subject']", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -198,4 +231,32 @@ function addGlobalStyle(css) {
     style.type = 'text/css';
     style.innerHTML = css.replace(/;/g, ' !important;');
     head.appendChild(style);
+}
+
+function makeSidebarSticky(id)
+{
+  if(! document.getElementById(id + '_sub'))
+  {
+    var bar = document.getElementById(id);
+    if(bar)
+    {
+      var newDiv = document.createElement('div');
+      bar.style.paddingLeft  = '0px';
+      bar.style.paddingRight = '0px';
+      bar.style.paddingTop   = '0px';
+      newDiv.id = id + '_sub';
+      newDiv.classList.add('sticky');
+      newDiv.style.borderTopWidth = '5px';
+      newDiv.style.borderTopColor = '#fa0';
+      newDiv.style.borderTopStyle = 'solid';
+      newDiv.style.paddingLeft  = '6px';
+      newDiv.style.paddingRight = '6px';
+      newDiv.style.paddingTop   = '6px';
+      newDiv.style.top          = '0px';
+      while (bar.childNodes.length > 0) {
+          newDiv.appendChild(bar.childNodes[0]);
+      }  
+      bar.appendChild(newDiv);
+    }
+  }
 }

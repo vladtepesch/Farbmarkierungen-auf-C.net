@@ -29,6 +29,9 @@ changelog:
           fix the width of the colored headers after µC.net style update around 2019-11-18
       v9: by vlad_tepesch
           added snippet to show own user id
+     v10: by vlad_tepesch
+          added stickySidebars option (removes gradient from title bar)
+          added insertToTop option that creates a link to go back to top into the right sidebar
 ```
 
 
